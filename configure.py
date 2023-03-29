@@ -1660,6 +1660,8 @@ def query_seastar_flags(pc_file, link_static_cxx=False):
     if link_static_cxx:
         libs = libs.replace('-lstdc++ ', '')
 
+    libs = libs + ' /home/zpp2022-http3/scylla-integration-test/scylladb/seastar/quiche/target/debug/libquiche.so'
+
     return cflags, libs
 
 for mode in build_modes:
