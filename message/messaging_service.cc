@@ -273,6 +273,10 @@ bool messaging_service::is_same_rack(inet_address addr) const {
     return topo.get_rack(addr) == topo.get_rack();
 }
 
+//insert your path to keys
+    std::string cert_file = "/home/zpp2022-http3/quic-keys/cert.crt";
+    std::string key_file = "/home/zpp2022-http3/quic-keys/cert.key";
+
 void messaging_service::do_start_listen() {
     bool listen_to_bc = _cfg.listen_on_broadcast_address && _cfg.ip != utils::fb_utilities::get_broadcast_address();
     rpc::server_options so;
@@ -338,7 +342,7 @@ void messaging_service::do_start_listen() {
                 lo.lba =  server_socket::load_balancing_algorithm::port;
                 auto addr = socket_address{a, _cfg.ssl_port};
                 return std::make_unique<rpc_protocol_server_wrapper>(_rpc->protocol(),
-                        so, seastar::tls::listen(_credentials, addr, lo), limits);
+                                                                     so, seastar::net::quic_listen(addr, cert_file, key_file), limits);
             }());
         };
         _server_tls[0] = listen(_cfg.ip, rpc::streaming_domain_type(0x77CC));

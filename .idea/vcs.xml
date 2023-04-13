@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/seastar" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/seastar/dpdk" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/seastar/quiche" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/seastar/quiche/quiche/deps/boringssl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/swagger-ui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tools/cqlsh" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tools/java" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tools/jmx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tools/python3" vcs="Git" />
+  </component>
+</project>

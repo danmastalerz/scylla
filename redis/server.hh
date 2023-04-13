@@ -39,7 +39,7 @@ class redis_exception;
 
 namespace service {
 
-class storage_proxy;
+    class storage_proxy;
 
 }
 

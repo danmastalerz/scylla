@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
+  <component name="UnattendedHostPersistenceState">
+    <option name="openedFilesInfos">
+      <list>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="9698" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/message/messaging_service.cc" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="20705" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/include/seastar/rpc/rpc.hh" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="7541" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/src/net/stack.cc" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="872" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/src/rpc/rpc.cc" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="2856" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/include/seastar/net/stack.hh" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/src/net/tcp.cc" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="67644" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/include/seastar/net/tcp.hh" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="88867" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/src/core/reactor.cc" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="14953" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/include/seastar/net/api.hh" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="35756" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/seastar/src/net/quic.cc" />
+        </OpenedFileInfo>
+      </list>
+    </option>
+  </component>
+</project>

@@ -52,7 +52,7 @@ def distro_setup_nix():
     employ_ld_trickery = False
 
 if os.environ.get('NIX_CC'):
-        distro_setup_nix()
+    distro_setup_nix()
 
 # distribution "internationalization", converting package names.
 # Fedora name is key, values is distro -> package name dict.
@@ -580,7 +580,7 @@ arg_parser.add_argument('--with', dest='artifacts', action='append', default=[],
                         help="Specify the artifacts to build, invoke {} with --list-artifacts to list all available artifacts, if unspecified all artifacts are built".format(sys.argv[0]))
 arg_parser.add_argument('--with-seastar', action='store', dest='seastar_path', default='seastar', help='Path to Seastar sources')
 add_tristate(arg_parser, name='dist', dest='enable_dist',
-                        help='scylla-tools-java, scylla-jmx and packages')
+             help='scylla-tools-java, scylla-jmx and packages')
 arg_parser.add_argument('--dist-only', dest='dist_only', action='store_true', default=False,
                         help='skip compiling code and run dist targets only')
 
@@ -595,7 +595,7 @@ arg_parser.add_argument('--compiler', action='store', dest='cxx', default='clang
 arg_parser.add_argument('--c-compiler', action='store', dest='cc', default='clang',
                         help='C compiler path')
 add_tristate(arg_parser, name='dpdk', dest='dpdk',
-                        help='Use dpdk (from seastar dpdk sources) (default=True for release builds)')
+             help='Use dpdk (from seastar dpdk sources) (default=True for release builds)')
 arg_parser.add_argument('--dpdk-target', action='store', dest='dpdk_target', default='',
                         help='Path to DPDK SDK target location (e.g. <DPDK SDK dir>/x86_64-native-linuxapp-gcc)')
 arg_parser.add_argument('--debuginfo', action='store', dest='debuginfo', type=int, default=1,
@@ -625,12 +625,12 @@ arg_parser.add_argument('--enable-seastar-debug-allocations', dest='seastar_debu
 arg_parser.add_argument('--with-antlr3', dest='antlr3_exec', action='store', default=None,
                         help='path to antlr3 executable')
 arg_parser.add_argument('--with-ragel', dest='ragel_exec', action='store', default='ragel',
-        help='path to ragel executable')
+                        help='path to ragel executable')
 add_tristate(arg_parser, name='stack-guards', dest='stack_guards', help='Use stack guards')
 arg_parser.add_argument('--verbose', dest='verbose', action='store_true',
                         help='Make configure.py output more verbose (useful for debugging the build process itself)')
 arg_parser.add_argument('--test-repeat', dest='test_repeat', action='store', type=str, default='1',
-                         help='Set number of times to repeat each unittest.')
+                        help='Set number of times to repeat each unittest.')
 arg_parser.add_argument('--test-timeout', dest='test_timeout', action='store', type=str, default='7200')
 arg_parser.add_argument('--clang-inline-threshold', action='store', type=int, dest='clang_inline_threshold', default=-1,
                         help="LLVM-specific inline threshold compilation parameter")
@@ -648,7 +648,7 @@ if args.list_artifacts:
 defines = ['XXH_PRIVATE_API',
            'SEASTAR_TESTING_MAIN',
            'FMT_DEPRECATED_OSTREAM',
-]
+           ]
 
 scylla_raft_core = [
     'raft/raft.cc',
@@ -1037,7 +1037,7 @@ scylla_core = (['message/messaging_service.cc',
                 'rust/wasmtime_bindings/src/lib.rs',
                 'utils/to_string.cc',
                 ] + [Antlr3Grammar('cql3/Cql.g')] + [Thrift('interface/cassandra.thrift', 'Cassandra')] \
-                  + scylla_raft_core
+               + scylla_raft_core
                )
 
 api = ['api/api.cc',
@@ -1085,34 +1085,34 @@ api = ['api/api.cc',
        ]
 
 alternator = [
-       'alternator/controller.cc',
-       'alternator/server.cc',
-       'alternator/executor.cc',
-       'alternator/stats.cc',
-       'alternator/serialization.cc',
-       'alternator/expressions.cc',
-       Antlr3Grammar('alternator/expressions.g'),
-       'alternator/conditions.cc',
-       'alternator/auth.cc',
-       'alternator/streams.cc',
-       'alternator/ttl.cc',
+    'alternator/controller.cc',
+    'alternator/server.cc',
+    'alternator/executor.cc',
+    'alternator/stats.cc',
+    'alternator/serialization.cc',
+    'alternator/expressions.cc',
+    Antlr3Grammar('alternator/expressions.g'),
+    'alternator/conditions.cc',
+    'alternator/auth.cc',
+    'alternator/streams.cc',
+    'alternator/ttl.cc',
 ]
 
 redis = [
-        'redis/controller.cc',
-        'redis/server.cc',
-        'redis/query_processor.cc',
-        'redis/protocol_parser.rl',
-        'redis/keyspace_utils.cc',
-        'redis/options.cc',
-        'redis/stats.cc',
-        'redis/mutation_utils.cc',
-        'redis/query_utils.cc',
-        'redis/abstract_command.cc',
-        'redis/command_factory.cc',
-        'redis/commands.cc',
-        'redis/lolwut.cc',
-        ]
+    'redis/controller.cc',
+    'redis/server.cc',
+    'redis/query_processor.cc',
+    'redis/protocol_parser.rl',
+    'redis/keyspace_utils.cc',
+    'redis/options.cc',
+    'redis/stats.cc',
+    'redis/mutation_utils.cc',
+    'redis/query_utils.cc',
+    'redis/abstract_command.cc',
+    'redis/command_factory.cc',
+    'redis/commands.cc',
+    'redis/lolwut.cc',
+]
 
 idls = ['idl/gossip_digest.idl.hh',
         'idl/uuid.idl.hh',
@@ -1327,7 +1327,7 @@ deps['test/raft/many_test'] = ['test/raft/many_test.cc', 'test/raft/replication.
 deps['test/raft/fsm_test'] =  ['test/raft/fsm_test.cc', 'test/raft/helpers.cc', 'test/lib/log.cc'] + scylla_raft_dependencies
 deps['test/raft/etcd_test'] =  ['test/raft/etcd_test.cc', 'test/raft/helpers.cc', 'test/lib/log.cc'] + scylla_raft_dependencies
 deps['test/raft/raft_sys_table_storage_test'] = ['test/raft/raft_sys_table_storage_test.cc'] + \
-    scylla_core + scylla_tests_generic_dependencies
+                                                scylla_core + scylla_tests_generic_dependencies
 deps['test/raft/raft_address_map_test'] = ['test/raft/raft_address_map_test.cc'] + scylla_core
 deps['test/raft/discovery_test'] =  ['test/raft/discovery_test.cc',
                                      'test/raft/helpers.cc',
@@ -1591,19 +1591,19 @@ def configure_seastar(build_dir, mode, mode_config):
     seastar_build_dir = os.path.join(build_dir, mode, 'seastar')
 
     seastar_cmake_args = [
-        '-DCMAKE_BUILD_TYPE={}'.format(mode_config['cmake_build_type']),
-        '-DCMAKE_C_COMPILER={}'.format(args.cc),
-        '-DCMAKE_CXX_COMPILER={}'.format(args.cxx),
-        '-DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON',
-        '-DSeastar_CXX_FLAGS=SHELL:{}'.format(mode_config['lib_cflags']),
-        '-DSeastar_LD_FLAGS={}'.format(semicolon_separated(mode_config['lib_ldflags'], mode_config['cxx_ld_flags'])),
-        '-DSeastar_CXX_DIALECT=gnu++20',
-        '-DSeastar_API_LEVEL=6',
-        '-DSeastar_UNUSED_RESULT_ERROR=ON',
-        '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON',
-        '-DSeastar_SCHEDULING_GROUPS_COUNT=16',
-        '-DSeastar_IO_URING=OFF', # io_uring backend is not stable enough
-    ] + distro_extra_cmake_args
+                             '-DCMAKE_BUILD_TYPE={}'.format(mode_config['cmake_build_type']),
+                             '-DCMAKE_C_COMPILER={}'.format(args.cc),
+                             '-DCMAKE_CXX_COMPILER={}'.format(args.cxx),
+                             '-DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON',
+                             '-DSeastar_CXX_FLAGS=SHELL:{}'.format(mode_config['lib_cflags']),
+                             '-DSeastar_LD_FLAGS={}'.format(semicolon_separated(mode_config['lib_ldflags'], mode_config['cxx_ld_flags'])),
+                             '-DSeastar_CXX_DIALECT=gnu++20',
+                             '-DSeastar_API_LEVEL=6',
+                             '-DSeastar_UNUSED_RESULT_ERROR=ON',
+                             '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON',
+                             '-DSeastar_SCHEDULING_GROUPS_COUNT=16',
+                             '-DSeastar_IO_URING=OFF', # io_uring backend is not stable enough
+                         ] + distro_extra_cmake_args
 
     if args.stack_guards is not None:
         stack_guards = 'ON' if args.stack_guards else 'OFF'
@@ -1660,6 +1660,8 @@ def query_seastar_flags(pc_file, link_static_cxx=False):
     if link_static_cxx:
         libs = libs.replace('-lstdc++ ', '')
 
+    libs = libs + ' /home/zpp2022-http3/scylla-integration-test/scylladb/seastar/quiche/target/debug/libquiche.so'
+
     return cflags, libs
 
 for mode in build_modes:
@@ -1684,7 +1686,7 @@ libs = ' '.join([maybe_static(args.staticyamlcpp, '-lyaml-cpp'), '-latomic', '-l
                  maybe_static(args.staticboost, '-lboost_date_time -lboost_regex -licuuc -licui18n'),
                  '-lxxhash',
                  '-ldeflate',
-                ])
+                 ])
 
 if not args.staticboost:
     args.user_cflags += ' -DBOOST_TEST_DYN_LINK'
@@ -2029,7 +2031,7 @@ with open(buildfile, 'w') as f:
         f.write(f'build $builddir/{mode}/gen/empty.cc: gen\n')
         for hh in headers:
             f.write('build $builddir/{mode}/{hh}.o: checkhh.{mode} {hh} | $builddir/{mode}/gen/empty.cc || {gen_headers_dep}\n'.format(
-                    mode=mode, hh=hh, gen_headers_dep=gen_headers_dep))
+                mode=mode, hh=hh, gen_headers_dep=gen_headers_dep))
 
         f.write('build {seastar_dep}: ninja $builddir/{mode}/seastar/build.ninja | always\n'
                 .format(**locals()))
@@ -2090,13 +2092,13 @@ with open(buildfile, 'w') as f:
     f.write('build checkheaders: phony || {}\n'.format(' '.join(['$builddir/{}/{}.o'.format(checkheaders_mode, hh) for hh in headers])))
 
     f.write(
-            'build build: phony {}\n'.format(' '.join([f'{mode}-build' for mode in default_modes]))
+        'build build: phony {}\n'.format(' '.join([f'{mode}-build' for mode in default_modes]))
     )
     f.write(
-            'build test: phony {}\n'.format(' '.join(['{mode}-test'.format(mode=mode) for mode in default_modes]))
+        'build test: phony {}\n'.format(' '.join(['{mode}-test'.format(mode=mode) for mode in default_modes]))
     )
     f.write(
-            'build check: phony {}\n'.format(' '.join(['{mode}-check'.format(mode=mode) for mode in default_modes]))
+        'build check: phony {}\n'.format(' '.join(['{mode}-check'.format(mode=mode) for mode in default_modes]))
     )
 
     f.write(textwrap.dedent(f'''\

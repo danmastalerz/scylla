@@ -88,8 +88,8 @@ public:
     rpc_protocol_client_wrapper(rpc_protocol &proto, rpc::client_options opts, socket_address addr,
                                 socket_address local, ::shared_ptr<seastar::tls::server_credentials> c)
             : _p(
-            std::make_unique<rpc_protocol::client>(proto, std::move(opts), seastar::tls::socket(c), addr, local)),
-              _credentials(c) {}
+            std::make_unique<rpc_protocol::client>(proto, std::move(opts), seastar::net::new_q_socket(), addr, local)),
+            _credentials(c) {}
 
     auto get_stats() const { return _p->get_stats(); }
 
@@ -109,7 +109,7 @@ public:
     template<typename Serializer, typename... Out>
     future<rpc::sink<Out...>> make_stream_sink() {
         if (_credentials) {
-            return _p->make_stream_sink<Serializer, Out...>(seastar::tls::socket(_credentials));
+            return _p->make_stream_sink<Serializer, Out...>( seastar::net::new_q_socket());
         }
         return _p->make_stream_sink<Serializer, Out...>();
     }

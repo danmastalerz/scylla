@@ -712,13 +712,15 @@ To start the scylla server proper, simply invoke as: scylla server (or just scyl
                 });
 
                 auto ip = utils::resolve(cfg->prometheus_address || cfg->listen_address, family, preferred).get0();
+                supervisor::notify("here 1");
 
                 prometheus::config pctx;
                 pctx.metric_help = "Scylla server statistics";
                 pctx.prefix = cfg->prometheus_prefix();
                 prometheus::start(prometheus_server, pctx).get();
                 with_scheduling_group(maintenance_scheduling_group, [&] {
-                  return prometheus_server.listen(socket_address{ip, cfg->prometheus_port()}).handle_exception([&ip, &cfg] (auto ep) {
+                    supervisor::notify("here 2");
+                    return prometheus_server.listen(socket_address{ip, cfg->prometheus_port()}).handle_exception([&ip, &cfg] (auto ep) {
                     startlog.error("Could not start Prometheus API server on {}:{}: {}", ip, cfg->prometheus_port(), ep);
                     return make_exception_future<>(ep);
                   });
